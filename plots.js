@@ -55,6 +55,7 @@ function handleSubmit() {
   
   buildPlot(stock);
   buildTable(stock);
+  getinfo(stock);
   
 
 }
@@ -84,9 +85,14 @@ function buildTable(dates, openPrices, highPrices, lowPrices, closingPrices, vol
     trow.append("td").text(volume[i]);
   }
 }
-function title(stock) {
 
+
+function getinfo(stock) {
+  var url1 = `https://newsapi.org/v2/everything?q=${stock}&apiKey=daa0bf4fd28548b1a47de5b7819502c7`;
+  const data = d3.json(url1);
+  console.log(data);
 }
+
 function buildPlot(stock) {
   var url = `https://www.quandl.com/api/v3/datasets/WIKI/${stock}.json?start_date=2017-01-01&end_date=2018-11-22&api_key=${apiKey}`;
 
